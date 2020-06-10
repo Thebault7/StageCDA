@@ -8,6 +8,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.stage.cda.herculepro.bean.article.Porte;
+
 @Controller
 public class IndexController {
 	

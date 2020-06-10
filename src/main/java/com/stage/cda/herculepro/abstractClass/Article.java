@@ -1,4 +1,4 @@
-package com.stage.cda.herculepro.bean;
+package com.stage.cda.herculepro.abstractClass;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,16 +7,18 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import com.stage.cda.herculepro.bean.Material;
+
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Article {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int id;
-	public int price;
-	public String reference;
-	public Material material;
+	protected int id;
+	protected String reference;
+	protected Material material;
+	protected String description;
 	
 	public Article() {
 	}

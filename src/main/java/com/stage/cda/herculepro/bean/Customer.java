@@ -21,22 +21,32 @@ public class Customer implements Serializable {
 	private String firstName;
 	private String sirName;
 	private Address address;
-	
+	private String customerCode;
 	
 	public Customer() {
 	}
 
-	public Customer(String firstName, String sirName, Address address) {
+	public Customer(String firstName, String sirName, Address address, String customerCode) {
 		this.firstName = firstName;
 		this.sirName = sirName;
 		this.address = address;
+		this.customerCode = customerCode;
 	}
 
-	public Customer(int id, String firstName, String sirName, Address address) {
+	public Customer(int id, String firstName, String sirName, Address address, String customerCode) {
 		this.id = id;
 		this.firstName = firstName;
 		this.sirName = sirName;
 		this.address = address;
+		this.customerCode = customerCode;
+	}
+
+	public String getCustomerCode() {
+		return customerCode;
+	}
+
+	public void setCustomerCode(String customerCode) {
+		this.customerCode = customerCode;
 	}
 
 	public int getId() {

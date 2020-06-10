@@ -16,7 +16,7 @@ public abstract class Article {
 	public int id;
 	public int price;
 	public String reference;
-	
+	public Material material;
 	
 	public Article() {
 	}

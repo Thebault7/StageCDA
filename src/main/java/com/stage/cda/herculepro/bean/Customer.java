@@ -1,13 +1,20 @@
 package com.stage.cda.herculepro.bean;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Customer {
+public class Customer implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -19,5 +26,54 @@ public class Customer {
 	public Customer() {
 	}
 
-	
+	public Customer(String firstName, String sirName, Address address) {
+		this.firstName = firstName;
+		this.sirName = sirName;
+		this.address = address;
+	}
+
+	public Customer(int id, String firstName, String sirName, Address address) {
+		this.id = id;
+		this.firstName = firstName;
+		this.sirName = sirName;
+		this.address = address;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getSirName() {
+		return sirName;
+	}
+
+	public void setSirName(String sirName) {
+		this.sirName = sirName;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", firstName=" + firstName + ", sirName=" + sirName + ", address=" + address
+				+ "]";
+	}
 }

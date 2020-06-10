@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class City implements Serializable{
+public class City implements Serializable {
 
 	/**
 	 * 

@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Materials implements Serializable {
+public class Material implements Serializable {
 
 	/**
 	 * 
@@ -21,15 +21,15 @@ public class Materials implements Serializable {
 	private String matType;
 	private float cost;
 	
-	public Materials() {
+	public Material() {
 	}
 
-	public Materials(String matType, float cost) {
+	public Material(String matType, float cost) {
 		this.matType = matType;
 		this.cost = cost;
 	}
 
-	public Materials(int id, String matType, float cost) {
+	public Material(int id, String matType, float cost) {
 		this.id = id;
 		this.matType = matType;
 		this.cost = cost;
@@ -61,6 +61,6 @@ public class Materials implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Materials [id=" + id + ", matType=" + matType + ", cost=" + cost + "]";
+		return "Material [id=" + id + ", matType=" + matType + ", cost=" + cost + "]";
 	}
 }

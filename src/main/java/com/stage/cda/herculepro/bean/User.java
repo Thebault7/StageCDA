@@ -26,7 +26,7 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	@Column(name="password", length = 60)
+	@Column(name="password", length = 64)
 	private String password;
 	
 	@Column(name="pseudo", length = 20)

@@ -1,33 +1,64 @@
 package com.stage.cda.herculepro.utils;
 
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+/**
+ * 
+ * @author Frederic Thebault
+ * Date: 11 June 2020
+ * 
+ * This class serves to hash passwords before they are stored into the database.
+ * The hash process is performed by PBEKeySpec and SecretKeyFactory.
+ * It uses the algorithm PBKDF2WithHmacSHA1.
+ * The salt is derived from the stringUsedForSalt, which for a user will be her pseudo.
+ * Thus, between users, the salt will be potentially different. But for a given user, 
+ * the salt will remain the same.
+ *
+ */
 public class PasswordEncoderGenerator {
 
-	public static void hashing(String str) {
-		SecureRandom random = new SecureRandom();
+	public String hashing(String stringToBeHashed, String stringUsedForSalt) {
 		byte[] salt = new byte[16];
-		random.nextBytes(salt);
+		
+		// One add the UTF-8 number for each letter of stringUsedForSalt
+		int size = 0;
+		for (int i = 0; i < stringUsedForSalt.length(); i++) {
+			size += stringUsedForSalt.charAt(i);
+		}
+		
+		for (int i = 0; i < 16; i++) {
+			// The computation of each salt[i] is done in the following way.
+			// The size of the user's pseudo is multiplied by the increment i.
+			// It gives an integer that can potentially be outside the byte domain.
+			// One take its modulo 258 and then subtract 128. This way, it will always be
+			// between -128 and 127, which is within the range of the byte.
+			// Finally, one converts from integer to Integer and then to byte.
+			salt[i] = new Integer(((i * size) % 258) - 128).byteValue();
+		}
 
-		KeySpec spec = new PBEKeySpec(str.toCharArray(), salt, 65536, 128);
+		KeySpec spec = new PBEKeySpec(stringToBeHashed.toCharArray(), salt, 65536, 128);
+		String finalResult = "";
 		try {
 			SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
 
 			byte[] hash = factory.generateSecret(spec).getEncoded();
+			
+			// The bytes inside hash[] are concatenated to form one resulting string
 			for (int i = 0; i < hash.length; i++) {
-				System.out.println(hash[i]);
+				finalResult += hash[i];
 			}
-
+			
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} catch (InvalidKeySpecException e) {
 			e.printStackTrace();
 		}
+		
+		return finalResult;
 	}
 }

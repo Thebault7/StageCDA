@@ -41,7 +41,7 @@ public class IndexController {
 	public String validatePassword(ModelMap modelMap, User user) {
 		um.addUser(user);
 		PasswordEncoderGenerator peg = new PasswordEncoderGenerator();
-		peg.hashing("eee");
+		peg.hashing("eee", "erut");
 		return "addQuote";
 	}
 }

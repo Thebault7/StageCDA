@@ -12,11 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.stage.cda.herculepro.bean.User;
 import com.stage.cda.herculepro.service.UserManager;
-import com.stage.cda.herculepro.utils.PasswordEncoderGenerator;
 
 @Controller
-public class IndexController {
-	
+public class AddUserController {
+
 	@Autowired
 	UserManager um;
 	
@@ -30,18 +29,16 @@ public class IndexController {
         //TODO: destroy code
     }
 	
-	@RequestMapping(method = RequestMethod.GET, path = {"/index"})
-	public ModelAndView goToIndexPage(ModelMap modelMap) {
+	@RequestMapping(method = RequestMethod.GET, path = {"/addUser"})
+	public ModelAndView addUser(ModelMap modelMap) {
 		User user = new User();
-		ModelAndView mav = new ModelAndView("index", "user", user);
+		ModelAndView mav = new ModelAndView("addUser", "user", user);
 		return mav;
 	}
 	
-	@RequestMapping(value="/validatePassword", method = RequestMethod.POST)
-	public String validatePassword(ModelMap modelMap, User user) {
+	@RequestMapping(method = RequestMethod.POST, path = {"/validateUser"})
+	public String validateUser(ModelMap modelMap, User user) {
 		um.addUser(user);
-		PasswordEncoderGenerator peg = new PasswordEncoderGenerator();
-		peg.hashing("eee");
 		return "addQuote";
 	}
 }

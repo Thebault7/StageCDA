@@ -36,7 +36,7 @@
 	
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 	
-	<jpa:repositories base-package="com.stage.cda.herculepro.dao" 
+	<jpa:repositories base-package="com.stage.cda.herculepro.dao"
 						entity-manager-factory-ref="emf"/>
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -80,5 +80,4 @@
 	</bean>
 
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-		
 </beans>

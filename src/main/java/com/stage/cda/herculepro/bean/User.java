@@ -10,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name="users", uniqueConstraints = {@UniqueConstraint(columnNames = {"pseudo"})})
+@Component
 public class User implements Serializable {
 
 	/**
@@ -21,10 +24,12 @@ public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
+	@Column(name="password", length = 60)
 	private String password;
 	
-	@Column(name="pseudo")
+	@Column(name="pseudo", length = 20)
 	private String pseudo;
 	
 	public User() {

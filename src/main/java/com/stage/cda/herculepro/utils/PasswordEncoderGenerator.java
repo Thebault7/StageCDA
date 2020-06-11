@@ -7,6 +7,8 @@ import java.security.spec.KeySpec;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+import org.springframework.stereotype.Service;
+
 /**
  * 
  * @author Frederic Thebault
@@ -20,6 +22,7 @@ import javax.crypto.spec.PBEKeySpec;
  * the salt will remain the same.
  *
  */
+@Service(value="peg")
 public class PasswordEncoderGenerator {
 
 	public String hashing(String stringToBeHashed, String stringUsedForSalt) {

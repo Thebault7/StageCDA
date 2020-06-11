@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="users", uniqueConstraints = {@UniqueConstraint(columnNames = {"pseudo"})})
 @Component
-public class User implements Serializable {
+public class User implements Serializable, Comparable<Object> {
 
 	/**
 	 * 
@@ -28,7 +28,7 @@ public class User implements Serializable {
 	private int id;
 	@Column(name="password", length = 64)
 	private String password;
-	
+
 	@Column(name="pseudo", length = 20)
 	private String pseudo;
 	
@@ -45,7 +45,7 @@ public class User implements Serializable {
 		this.password = password;
 		this.pseudo = pseudo;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -73,5 +73,12 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", password=" + password + ", pseudo=" + pseudo + "]";
+	}
+
+	@Override
+	public int compareTo(Object object) {
+		User compareToUser = (User)object;
+		if (this.getPseudo().equals(compareToUser.getPseudo()) && this.getPassword().equals(compareToUser.getPassword())) return 1;
+		return 0;
 	}
 }

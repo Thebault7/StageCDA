@@ -10,23 +10,6 @@
 <title>Page d'accueil</title>
 </head>
 <body>
-	<h1>Entrer les identifiants</h1>
- 	<form:form action="app/validatePassword" method="POST" modelAttribute="user">
-		<div>
-			<form:label path="pseudo">Pseudo</form:label>
-			<div>
-				<form:input path="pseudo" placeholder="Pseudo..." />
-			</div>
-		</div>
-		<div>
-			<form:label path="password">Password</form:label>
-			<div>
-				<form:password path="password" />
-			</div>
-		</div>
-		<div>
-			<button type="submit">Se connecter</button>
-		</div>
-	</form:form>
+	<p><a href="app/connection">Connexion</a></p>
 </body>
 </html>

@@ -19,9 +19,9 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="articles")
-//@DiscriminatorColumn(name="types")
-//@DiscriminatorValue(value="article")
-//@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="types")
+@DiscriminatorValue(value="article")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @Component
 public class Article implements Serializable {
 
@@ -32,13 +32,13 @@ public class Article implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	protected int id;
+	private int id;
 	@Column(name="references", length = 20)
-	protected String reference;
+	private String reference;
 	@ManyToOne(fetch=FetchType.EAGER)
-	protected Material material;
+	private Material material;
 	@Column(name="descriptions", length = 200)
-	protected String description;
+	private String description;
 	
 	public Article() {
 	}

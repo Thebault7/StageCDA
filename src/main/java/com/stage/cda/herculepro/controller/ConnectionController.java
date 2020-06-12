@@ -18,7 +18,7 @@ import com.stage.cda.herculepro.utils.PasswordEncoderGenerator;
 import com.stage.cda.herculepro.utils.checkIfListContainsAnEntity;
 
 @Controller
-public class IndexController<T> {
+public class ConnectionController<T> {
 	
 	@Autowired
 	UserManager um;
@@ -44,6 +44,13 @@ public class IndexController<T> {
 		return mav;
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, path = {"/connection"})
+	public ModelAndView enterPassword(ModelMap modelMap) {
+		User user = new User();
+		ModelAndView mav = new ModelAndView("connection", "user", user);
+		return mav;
+	}
+	
 	@RequestMapping(value="/validatePassword", method = RequestMethod.POST)
 	public String validatePassword(ModelMap modelMap, User user) {
 		String hashedPassword = peg.hashing(user.getPassword(), user.getPseudo());
@@ -52,6 +59,6 @@ public class IndexController<T> {
 		if (cilcae.checkList(listUsers, user)) {
 			return "addQuote";
 		}
-		return "index";
+		return "connection";
 	}
 }

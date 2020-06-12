@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 import com.stage.cda.herculepro.bean.Article;
+import com.stage.cda.herculepro.bean.Material;
 
 @Entity
 @Table(name="doors")
@@ -33,8 +34,15 @@ public class Door extends Article implements Serializable {
 		super();
 	}
 
-	public Door(float price, float height, float width) {
-		super();
+	public Door(String reference, Material material, String description, float price, float height, float width) {
+		super(reference, material, description);
+		this.price = price;
+		this.height = height;
+		this.width = width;
+	}
+
+	public Door(int id, String reference, Material material, String description, float price, float height, float width) {
+		super(id, reference, material, description);
 		this.price = price;
 		this.height = height;
 		this.width = width;
@@ -66,7 +74,6 @@ public class Door extends Article implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Door [price=" + price + ", height=" + height + ", width=" + width + ", id=" + id + ", reference="
-				+ reference + ", material=" + material + ", description=" + description + "]";
+		return "Door [price=" + price + ", height=" + height + ", width=" + width + ", " + super.toString() + "]";
 	}
 }

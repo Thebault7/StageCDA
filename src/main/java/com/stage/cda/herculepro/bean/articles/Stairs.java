@@ -1,3 +1,4 @@
+package com.stage.cda.herculepro.bean.articles;
 //package com.stage.cda.herculepro.abstractClass.articles;
 //
 //import javax.persistence.Entity;

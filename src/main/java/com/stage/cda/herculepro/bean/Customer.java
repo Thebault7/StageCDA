@@ -36,25 +36,29 @@ public class Customer implements Serializable {
 	private String customerCode;
 	@Column(name="email", length = 50)
 	private String email;
+	@Column(name="phone", length = 16)
+	private String phoneNumber;
 	
 	public Customer() {
 	}
 
-	public Customer(String firstName, String sirName, Address address, String customerCode, String email) {
+	public Customer(String firstName, String sirName, Address address, String customerCode, String email, String phoneNumber) {
 		this.firstName = firstName;
 		this.sirName = sirName;
 		this.address = address;
 		this.customerCode = customerCode;
 		this.email = email;
+		this.phoneNumber = phoneNumber;
 	}
 
-	public Customer(int id, String firstName, String sirName, Address address, String customerCode, String email) {
+	public Customer(int id, String firstName, String sirName, Address address, String customerCode, String email, String phoneNumber) {
 		this.id = id;
 		this.firstName = firstName;
 		this.sirName = sirName;
 		this.address = address;
 		this.customerCode = customerCode;
 		this.email = email;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getCustomerCode() {
@@ -105,9 +109,17 @@ public class Customer implements Serializable {
 		this.email = email;
 	}
 
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", sirName=" + sirName + ", address=" + address
-				+ "]";
+				+ ", customerCode=" + customerCode + ", email=" + email + ", phoneNumber=" + phoneNumber + "]";
 	}
 }

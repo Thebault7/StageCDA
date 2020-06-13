@@ -8,29 +8,29 @@ import org.springframework.stereotype.Service;
 import com.stage.cda.herculepro.bean.User;
 import com.stage.cda.herculepro.dao.UserDAO;
 
-@Service(value="um")
+@Service(value="userManager")
 public class UserManager {
 
 	@Autowired
-	UserDAO uDAO;
+	UserDAO userDAO;
 	
 	public User findUser(String pseudo) {
-		return uDAO.findOneByPseudo(pseudo);
+		return userDAO.findOneByPseudo(pseudo);
 	}
 	
 	public void addUser(User user) {
-		uDAO.save(user);
+		userDAO.save(user);
 	}
 	
 	public void modifyUser(User user) {
-		uDAO. save(user);
+		userDAO. save(user);
 	}
 	
 	public void deleteUser(User user) {
-		uDAO.delete(user);
+		userDAO.delete(user);
 	}
 	
 	public List<User> listUsers() {
-		return uDAO.findAll();
+		return userDAO.findAll();
 	}
 }

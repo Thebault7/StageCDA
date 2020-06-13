@@ -21,7 +21,7 @@ import com.stage.cda.herculepro.utils.checkIfListContainsAnEntity;
 public class ConnectionController<T> {
 	
 	@Autowired
-	UserManager um;
+	UserManager userManager;
 	@Autowired
 	PasswordEncoderGenerator peg;
 	@Autowired
@@ -39,7 +39,6 @@ public class ConnectionController<T> {
 	
 	@RequestMapping(method = RequestMethod.GET, path = {"/index"})
 	public void goToIndexPage(ModelMap modelMap) {
-		
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = {"/connection"})
@@ -50,13 +49,16 @@ public class ConnectionController<T> {
 	}
 	
 	@RequestMapping(value="/validatePassword", method = RequestMethod.POST)
-	public String validatePassword(ModelMap modelMap, User user) {
+	public ModelAndView validatePassword(ModelMap modelMap, User user) {
 		String hashedPassword = peg.hashing(user.getPassword(), user.getPseudo());
 		user.setPassword(hashedPassword);
-		List<User> listUsers = um.listUsers();
+		List<User> listUsers = userManager.listUsers();
 		if (cilcae.checkList(listUsers, user)) {
-			return "addQuote";
+			ModelAndView mav = new ModelAndView("mainPage", "user", user);
+			return mav;
 		}
-		return "connection";
+		ModelAndView mav = new ModelAndView("connection", "user", user);
+		mav.addObject("errorIdentification", "Les identifiants entrés sont invalides.");
+		return mav;
 	}
 }

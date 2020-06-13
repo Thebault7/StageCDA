@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Création d'un nouveau compte utilisateur</title>
+<meta charset="UTF-8">
+<title>CrÃ©ation d'un nouveau compte utilisateur</title>
 </head>
 <body>
 	<h1>Entrez vos nouveaux identifiants</h1>
-	<p>${errorPseudoAlreadyTaken}</p>
+	<p>${errorMessage}</p>
  	<form:form action="validateNewUser" method="POST" modelAttribute="user">
 		<div>
 			<form:label path="pseudo">Pseudo</form:label>
@@ -32,9 +32,9 @@
 			</div>
 		</div>
 		<div>
-			<form:label path="firstName">Prénom</form:label>
+			<form:label path="firstName">PrÃ©nom</form:label>
 			<div>
-				<form:input path="firstName" placeholder="Prénom..." />
+				<form:input path="firstName" placeholder="PrÃ©nom..." />
 			</div>
 		</div>
 		<div>

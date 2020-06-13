@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.stage.cda.herculepro.bean.Company;
 
-@Repository(value="cDAO")
+@Repository(value="companyDAO")
 public interface CompanyDAO extends JpaRepository<Company, Integer>  {
 
 	List<Company> findByOrderByCompanyNameAsc();

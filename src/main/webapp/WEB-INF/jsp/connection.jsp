@@ -11,6 +11,7 @@
 </head>
 <body>
 	<h1>Entrer les identifiants</h1>
+	<p>${errorIdentification}</p>
  	<form:form action="validatePassword" method="POST" modelAttribute="user">
 		<div>
 			<form:label path="pseudo">Pseudo</form:label>

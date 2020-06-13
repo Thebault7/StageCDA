@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.stage.cda.herculepro.bean.User;
 
-@Repository(value="uDAO")
+@Repository(value="userDAO")
 public interface UserDAO extends JpaRepository<User, Integer> {
 
 	User findOneByPseudo(String pseudo);

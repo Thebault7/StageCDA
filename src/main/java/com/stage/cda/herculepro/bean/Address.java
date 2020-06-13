@@ -30,7 +30,7 @@ public class Address implements Serializable{
 	private String streetName;
 	@Column(name="numbers", length = 7)
 	private String streetNumber;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private City city;
 	
 	public Address() {
@@ -73,11 +73,11 @@ public class Address implements Serializable{
 		this.streetNumber = streetNumber;
 	}
 
-	public City getListCity() {
+	public City getCity() {
 		return city;
 	}
 
-	public void setListCity(City city) {
+	public void setCity(City city) {
 		this.city = city;
 	}
 

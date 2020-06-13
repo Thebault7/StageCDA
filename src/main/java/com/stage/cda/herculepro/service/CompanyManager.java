@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import com.stage.cda.herculepro.bean.Company;
 import com.stage.cda.herculepro.dao.CompanyDAO;
 
-@Service(value="cm")
+@Service(value="companyManager")
 public class CompanyManager {
 
 	@Autowired
-	CompanyDAO cDAO;
+	CompanyDAO companyDAO;
 	
 	public List<Company> findByOrderByCompanyNameAsc() {
-		return cDAO.findByOrderByCompanyNameAsc();
+		return companyDAO.findByOrderByCompanyNameAsc();
 	}
 }

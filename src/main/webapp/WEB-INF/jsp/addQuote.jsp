@@ -11,6 +11,6 @@
 </head>
 <body>
 	<h1>AJOUT</h1>
-	<p><a href="index">suite</a></p>
+	<p><a href="connection">suite</a></p>
 </body>
 </html>

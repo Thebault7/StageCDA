@@ -11,5 +11,7 @@
 </head>
 <body>
 	<p><a href="app/connection">Connexion</a></p>
+	<br>
+	<p><a href="app/addUser">Création d'un compte</a></p>
 </body>
 </html>

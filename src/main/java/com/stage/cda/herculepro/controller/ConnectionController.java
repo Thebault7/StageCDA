@@ -38,10 +38,8 @@ public class ConnectionController<T> {
     }
 	
 	@RequestMapping(method = RequestMethod.GET, path = {"/index"})
-	public ModelAndView goToIndexPage(ModelMap modelMap) {
-		User user = new User();
-		ModelAndView mav = new ModelAndView("index", "user", user);
-		return mav;
+	public void goToIndexPage(ModelMap modelMap) {
+		
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = {"/connection"})

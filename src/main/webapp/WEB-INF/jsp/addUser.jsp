@@ -7,11 +7,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Nouvel utilisateur</title>
+<title>Création d'un nouveau compte utilisateur</title>
 </head>
 <body>
-	<h1>Entrer les identifiants</h1>
- 	<form:form action="app/validateUser" method="POST" modelAttribute="user">
+	<h1>Entrez vos nouveaux identifiants</h1>
+	<p>${errorPseudoAlreadyTaken}</p>
+ 	<form:form action="validateNewUser" method="POST" modelAttribute="user">
 		<div>
 			<form:label path="pseudo">Pseudo</form:label>
 			<div>
@@ -22,6 +23,32 @@
 			<form:label path="password">Password</form:label>
 			<div>
 				<form:password path="password" placeholder="Mot de passe..." />
+			</div>
+		</div>
+		<div>
+			<form:label path="sirName">Nom</form:label>
+			<div>
+				<form:input path="sirName" placeholder="Nom..." />
+			</div>
+		</div>
+		<div>
+			<form:label path="firstName">Prénom</form:label>
+			<div>
+				<form:input path="firstName" placeholder="Prénom..." />
+			</div>
+		</div>
+		<div>
+			<form:label path="email">Email</form:label>
+			<div>
+				<form:input path="email" placeholder="Email..." />
+			</div>
+		</div>
+		<div>			
+			<form:label path="company.id">Entreprise</form:label>
+			<div>
+				<form:select path="company.id">
+					<form:options items="${listCompanies}" itemValue="id" itemLabel="companyName"/>
+				</form:select>					
 			</div>
 		</div>
 		<div>

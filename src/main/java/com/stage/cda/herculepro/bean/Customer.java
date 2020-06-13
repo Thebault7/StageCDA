@@ -34,7 +34,7 @@ public class Customer implements Serializable {
 	private Address address;
 	@Column(name="customer_reference", length = 20)
 	private String customerCode;
-	@Column(name="email", length = 40)
+	@Column(name="email", length = 50)
 	private String email;
 	
 	public Customer() {

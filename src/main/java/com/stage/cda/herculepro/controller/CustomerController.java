@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.stage.cda.herculepro.bean.Address;
+import com.stage.cda.herculepro.bean.City;
 import com.stage.cda.herculepro.bean.Customer;
+import com.stage.cda.herculepro.service.AddressManager;
+import com.stage.cda.herculepro.service.CityManager;
 import com.stage.cda.herculepro.service.CustomerManager;
 
 @Controller
@@ -20,6 +24,10 @@ public class CustomerController {
 
 	@Autowired
 	CustomerManager customerManager;
+	@Autowired
+	AddressManager addressManager;
+	@Autowired
+	CityManager cityManager;
 	
 	@PostConstruct
 	private void init() {
@@ -44,7 +52,12 @@ public class CustomerController {
 		Customer customer = new Customer();
 		if (index != null && index > 0) {
 			customer = customerManager.findOneById(index);
-			return new ModelAndView("editCustomer", "customer", customer);
+			List<Address> listAddresses = addressManager.findByOrderByAddressNameAsc();
+			ModelAndView mav = new ModelAndView("editCustomer", "customer", customer);
+			mav.addObject("listAddresses", listAddresses);
+//			List<City> listCities = cityManager.findByOrderByCityNameAsc();
+//			mav.addObject("listCities", listCities);
+			return mav;
 		}
 		return new ModelAndView("editCustomer");
 	}

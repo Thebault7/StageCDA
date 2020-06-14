@@ -26,7 +26,7 @@
 			<tr>
 				<td>${c.sirName}</td>
 				<td>${c.firstName}</td>
-				<td>${c.address.streetNumber} ${c.address.streetName}<br />${c.address.city.postCode} ${c.address.city.cityName}</td>
+				<td>${c.address.addressNumber} ${c.address.addressName}<br />${c.address.city.postCode} ${c.address.city.cityName}</td>
 				<td>${c.email}</td>
 				<td>${c.phoneNumber}</td>
 				<td>${c.customerCode}</td>

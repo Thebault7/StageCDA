@@ -27,25 +27,25 @@ public class Address implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@Column(name="names", length = 50, nullable=false)
-	private String streetName;
+	private String addressName;
 	@Column(name="numbers", length = 7)
-	private String streetNumber;
+	private String addressNumber;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private City city;
 	
 	public Address() {
 	}
 
-	public Address(String streetName, String streetNumber, City city) {
-		this.streetName = streetName;
-		this.streetNumber = streetNumber;
+	public Address(String addressName, String addressNumber, City city) {
+		this.addressName = addressName;
+		this.addressNumber = addressNumber;
 		this.city = city;
 	}
 
-	public Address(int id, String streetName, String streetNumber, City city) {
+	public Address(int id, String addressName, String addressNumber, City city) {
 		this.id = id;
-		this.streetName = streetName;
-		this.streetNumber = streetNumber;
+		this.addressName = addressName;
+		this.addressNumber = addressNumber;
 		this.city = city;
 	}
 
@@ -57,20 +57,20 @@ public class Address implements Serializable{
 		this.id = id;
 	}
 
-	public String getStreetName() {
-		return streetName;
+	public String getaddressName() {
+		return addressName;
 	}
 
-	public void setStreetName(String streetName) {
-		this.streetName = streetName;
+	public void setaddressName(String addressName) {
+		this.addressName = addressName;
 	}
 
-	public String getStreetNumber() {
-		return streetNumber;
+	public String getaddressNumber() {
+		return addressNumber;
 	}
 
-	public void setStreetNumber(String streetNumber) {
-		this.streetNumber = streetNumber;
+	public void setaddressNumber(String addressNumber) {
+		this.addressNumber = addressNumber;
 	}
 
 	public City getCity() {
@@ -83,7 +83,7 @@ public class Address implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", streetName=" + streetName + ", streetNumber=" + streetNumber + ", city=" + city
+		return "Address [id=" + id + ", addressName=" + addressName + ", addressNumber=" + addressNumber + ", city=" + city
 				+ "]";
 	}
 }

@@ -11,4 +11,5 @@ import com.stage.cda.herculepro.bean.Address;
 public interface AddressDAO extends JpaRepository<Address, Integer> {
 
 	List<Address> findByOrderByAddressNameAsc();
+	List<Address> findAllByCityId(int id);
 }

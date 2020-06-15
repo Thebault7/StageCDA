@@ -45,7 +45,6 @@ public class AddUserController {
 		return mav;
 	}
 	
-	
 	public ModelAndView addUser(ModelMap modelMap, User user, List<String> error) {
 		ModelAndView mav = new ModelAndView("addUser", "user", user);
 		mav.addObject("listCompanies", companyManager.findByOrderByCompanyNameAsc());

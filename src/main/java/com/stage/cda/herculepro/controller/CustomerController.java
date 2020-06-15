@@ -55,8 +55,9 @@ public class CustomerController {
 			List<Address> listAddresses = addressManager.findByOrderByAddressNameAsc();
 			ModelAndView mav = new ModelAndView("editCustomer", "customer", customer);
 			mav.addObject("listAddresses", listAddresses);
-//			List<City> listCities = cityManager.findByOrderByCityNameAsc();
-//			mav.addObject("listCities", listCities);
+			List<City> listCities = cityManager.findByOrderByCityNameAsc();
+			mav.addObject("listCities", listCities);
+			mav.addObject("customerIndex", index);
 			return mav;
 		}
 		return new ModelAndView("editCustomer");

@@ -17,4 +17,8 @@ public class AddressManager {
 	public List<Address> findByOrderByAddressNameAsc() {
 		return addressDAO.findByOrderByAddressNameAsc();
 	}
+	
+	public List<Address> findAllByCityId(int id) {
+		return addressDAO.findAllByCityId(id);
+	}
 }

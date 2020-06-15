@@ -2,17 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Création d'un nouveau compte utilisateur</title>
+<meta charset=UTF-8>
+<title>Modification des données de l'utilisateur</title>
 </head>
 <body>
-	<h1>Entrez vos nouveaux identifiants</h1>
-	<p>${errorMessage}</p>
- 	<form:form action="validateNewUser" method="POST" modelAttribute="user">
+	<h1>Modification des données de l'utilisateur</h1>
+	<p>${username}</p>
+	
+	
+	
+	
+	<%--<form:form action="validateModifUser" method="POST" modelAttribute="user">
 		<div>
 			<form:label path="pseudo">Pseudo</form:label>
 			<div>
@@ -38,9 +42,6 @@
 			</div>
 		</div>
 		<div>
-			<p>GENDER ICI</p>
-		</div>
-		<div>
 			<form:label path="email">Email</form:label>
 			<div>
 				<form:input path="email" placeholder="Email..." />
@@ -57,6 +58,6 @@
 		<div>
 			<button type="submit">S'inscrire</button>
 		</div>
-	</form:form>
+	</form:form> --%>
 </body>
 </html>

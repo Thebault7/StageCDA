@@ -9,5 +9,4 @@ import com.stage.cda.herculepro.bean.User;
 public interface UserDAO extends JpaRepository<User, Integer> {
 
 	User findOneByPseudo(String pseudo);
-
 }

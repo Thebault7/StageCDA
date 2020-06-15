@@ -14,7 +14,7 @@ public class CityManager {
 	@Autowired
 	CityDAO cityDAO;
 	
-//	public List<City> findByOrderByCityNameAsc() {
-//		return cityDAO.findByOrderByCityNameAsc();
-//	}
+	public List<City> findByOrderByCityNameAsc() {
+		return cityDAO.findByOrderByCityNameAsc();
+	}
 }

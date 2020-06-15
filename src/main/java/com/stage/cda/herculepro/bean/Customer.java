@@ -30,6 +30,8 @@ public class Customer implements Serializable {
 	private String firstName;
 	@Column(name="sirnames", length = 30, nullable=false)
 	private String sirName;
+	@Column(name="genders", length = 1)
+	private String gender;
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Address address;
 	@Column(name="customer_reference", length = 20)
@@ -42,19 +44,21 @@ public class Customer implements Serializable {
 	public Customer() {
 	}
 
-	public Customer(String firstName, String sirName, Address address, String customerCode, String email, String phoneNumber) {
+	public Customer(String firstName, String sirName, String gender, Address address, String customerCode, String email, String phoneNumber) {
 		this.firstName = firstName;
 		this.sirName = sirName;
+		this.gender = gender;
 		this.address = address;
 		this.customerCode = customerCode;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Customer(int id, String firstName, String sirName, Address address, String customerCode, String email, String phoneNumber) {
+	public Customer(int id, String firstName, String sirName, String gender, Address address, String customerCode, String email, String phoneNumber) {
 		this.id = id;
 		this.firstName = firstName;
 		this.sirName = sirName;
+		this.gender = gender;
 		this.address = address;
 		this.customerCode = customerCode;
 		this.email = email;
@@ -93,6 +97,14 @@ public class Customer implements Serializable {
 		this.sirName = sirName;
 	}
 
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public Address getAddress() {
 		return address;
 	}
@@ -119,7 +131,8 @@ public class Customer implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", firstName=" + firstName + ", sirName=" + sirName + ", address=" + address
-				+ ", customerCode=" + customerCode + ", email=" + email + ", phoneNumber=" + phoneNumber + "]";
+		return "Customer [id=" + id + ", firstName=" + firstName + ", sirName=" + sirName + ", gender=" + gender
+				+ ", address=" + address + ", customerCode=" + customerCode + ", email=" + email + ", phoneNumber="
+				+ phoneNumber + "]";
 	}
 }

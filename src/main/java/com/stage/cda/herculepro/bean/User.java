@@ -36,6 +36,8 @@ public class User implements Serializable, Comparable<Object> {
 	private String sirName;
 	@Column(name="first_names", length = 30)
 	private String firstName;
+	@Column(name="gender", length = 1)
+	private char gender;
 	@Column(name="emails", length = 50)
 	private String email;
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -44,22 +46,24 @@ public class User implements Serializable, Comparable<Object> {
 	public User() {
 	}
 	
-	public User(String password, String pseudo, String sirName, String firstName, String email, Company company) {
+	public User(String password, String pseudo, String sirName, String firstName, char gender, String email, Company company) {
 		this.password = password;
 		this.pseudo = pseudo;
 		this.sirName = sirName;
 		this.firstName = firstName;
+		this.gender = gender;
 		this.email = email;
 		this.company = company;
 	}
 
-	public User(int id, String password, String pseudo, String sirName, String firstName, String email,
+	public User(int id, String password, String pseudo, String sirName, String firstName, char gender, String email,
 			Company company) {
 		this.id = id;
 		this.password = password;
 		this.pseudo = pseudo;
 		this.sirName = sirName;
 		this.firstName = firstName;
+		this.gender = gender;
 		this.email = email;
 		this.company = company;
 	}
@@ -104,6 +108,14 @@ public class User implements Serializable, Comparable<Object> {
 		this.firstName = firstName;
 	}
 
+	public char getGender() {
+		return gender;
+	}
+
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -123,7 +135,7 @@ public class User implements Serializable, Comparable<Object> {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", password=" + password + ", pseudo=" + pseudo + ", sirName=" + sirName
-				+ ", firstName=" + firstName + ", email=" + email + ", company=" + company + "]";
+				+ ", firstName=" + firstName + ", gender=" + gender + ", email=" + email + ", company=" + company + "]";
 	}
 
 	@Override

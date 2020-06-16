@@ -50,6 +50,7 @@ public class ConnectionController<T> {
 	
 	@RequestMapping(value="/validatePassword", method = RequestMethod.POST)
 	public ModelAndView validatePassword(ModelMap modelMap, User user) {
+		System.out.println("___________________________________________________");
 		String hashedPassword = peg.hashing(user.getPassword(), user.getPseudo());
 		user.setPassword(hashedPassword);
 		List<User> listUsers = userManager.listUsers();

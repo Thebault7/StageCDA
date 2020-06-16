@@ -38,9 +38,6 @@
 			</div>
 		</div>
 		<div>
-			<p>GENDER ICI</p>
-		</div>
-		<div>
 			<form:label path="email">Email</form:label>
 			<div>
 				<form:input path="email" placeholder="Email..." />

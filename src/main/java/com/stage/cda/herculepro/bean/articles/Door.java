@@ -3,8 +3,12 @@ package com.stage.cda.herculepro.bean.articles;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -14,38 +18,88 @@ import com.stage.cda.herculepro.bean.Material;
 
 @Entity
 @Table(name="doors")
-@DiscriminatorValue(value="door")
 @Component
-public class Door extends Article implements Serializable {
+public class Door implements Serializable, Article {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	@Column(name="references", length = 20)
+	private String reference;
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Material material;
+	@Column(name="descriptions", length = 200)
+	private String description;
 	@Column(name="prices", length = 12)
 	private float price;
 	@Column(name="heights", length = 15)
 	private float height;
 	@Column(name="widths", length = 15)
 	private float width;
+	@Column(name="quantities", length = 6)
+	private int quantity;
 	
 	public Door() {
-		super();
 	}
 
-	public Door(String reference, Material material, String description, float price, float height, float width) {
-		super(reference, material, description);
+	public Door(String reference, Material material, String description, float price, float height, float width,
+			int quantity) {
+		this.reference = reference;
+		this.material = material;
+		this.description = description;
 		this.price = price;
 		this.height = height;
 		this.width = width;
+		this.quantity = quantity;
 	}
 
-	public Door(int id, String reference, Material material, String description, float price, float height, float width) {
-		super(id, reference, material, description);
+	public Door(int id, String reference, Material material, String description, float price, float height, float width,
+			int quantity) {
+		this.id = id;
+		this.reference = reference;
+		this.material = material;
+		this.description = description;
 		this.price = price;
 		this.height = height;
 		this.width = width;
+		this.quantity = quantity;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getReference() {
+		return reference;
+	}
+
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
+
+	public Material getMaterial() {
+		return material;
+	}
+
+	public void setMaterial(Material material) {
+		this.material = material;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public float getPrice() {
@@ -72,8 +126,21 @@ public class Door extends Article implements Serializable {
 		this.width = width;
 	}
 
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "Door [price=" + price + ", height=" + height + ", width=" + width + ", " + super.toString() + "]";
+		return "Door [id=" + id + ", reference=" + reference + ", material=" + material + ", description=" + description
+				+ ", price=" + price + ", height=" + height + ", width=" + width + ", quantity=" + quantity + "]";
 	}
 }

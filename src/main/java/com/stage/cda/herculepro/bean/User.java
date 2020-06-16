@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="users", uniqueConstraints = {@UniqueConstraint(columnNames = {"pseudo"})})
 @Component
-public class User implements Serializable, Comparable<Object>/*, UserDetails*/ {
+public class User implements Serializable, Comparable<Object>/*, UserDetails */{
 
 	/**
 	 * 
@@ -134,9 +134,10 @@ public class User implements Serializable, Comparable<Object>/*, UserDetails*/ {
 		this.company = company;
 	}
 
-	public String getUsername() {
-		return username;
-	}
+//	@Override
+//	public String getUsername() {
+//		return username;
+//	}
 
 	public void setUsername(String username) {
 		this.username = username;
@@ -159,11 +160,6 @@ public class User implements Serializable, Comparable<Object>/*, UserDetails*/ {
 //	public Collection<? extends GrantedAuthority> getAuthorities() {
 //		// TODO Auto-generated method stub
 //		return null;
-//	}
-//
-//	@Override
-//	public String getUsername() {
-//		return pseudo;
 //	}
 //
 //	@Override

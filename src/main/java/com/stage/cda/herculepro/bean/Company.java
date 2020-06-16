@@ -36,6 +36,14 @@ public class Company implements Serializable {
 	private String email;
 	@Column(name="logo_images", length = 60)
 	private String logo;
+	@Column(name="types", length = 10)
+	private String type;
+	@Column(name="funds", length = 10)
+	private int fund;
+	@Column(name="sirets", length = 16)
+	private String siret;
+	@Column(name="codes", length = 15)
+	private String code;
 	
 	public Company() {
 	}
@@ -55,6 +63,20 @@ public class Company implements Serializable {
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.logo = logo;
+	}
+
+	public Company(int id, String companyName, Address address, String phoneNumber, String email, String logo,
+			String type, int fund, String siret, String code) {
+		this.id = id;
+		this.companyName = companyName;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.logo = logo;
+		this.type = type;
+		this.fund = fund;
+		this.siret = siret;
+		this.code = code;
 	}
 
 	public int getId() {
@@ -105,9 +127,42 @@ public class Company implements Serializable {
 		this.logo = logo;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getFund() {
+		return fund;
+	}
+
+	public void setFund(int fund) {
+		this.fund = fund;
+	}
+
+	public String getSiret() {
+		return siret;
+	}
+
+	public void setSiret(String siret) {
+		this.siret = siret;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	@Override
 	public String toString() {
 		return "Company [id=" + id + ", companyName=" + companyName + ", address=" + address + ", phoneNumber="
-				+ phoneNumber + ", email=" + email + ", logo=" + logo + "]";
+				+ phoneNumber + ", email=" + email + ", logo=" + logo + ", type=" + type + ", fund=" + fund + ", siret="
+				+ siret + ", code=" + code + "]";
 	}
 }

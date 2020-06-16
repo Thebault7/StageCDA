@@ -9,6 +9,7 @@ import com.stage.cda.herculepro.bean.User;
 import com.stage.cda.herculepro.dao.UserDAO;
 
 @Service(value="userManager")
+//@Slf4j
 public class UserManager /*implements UserDetailsService*/ {
 
 	@Autowired
@@ -34,14 +35,11 @@ public class UserManager /*implements UserDetailsService*/ {
 		return userDAO.findAll();
 	}
 
-//	// The username corresponds to the "pseudo" field in the User bean.
+//	// username is stored in the enumeration "RoleEnum.java"
 //	@Override
 //	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//		User user = userDAO.findOneByPseudo(username);
-//		if (user == null) {
-//			throw new UsernameNotFoundException("Aucun d'utilisateur avec le pseudo " + username + " n'a été trouvé.");
-//		} else {
-//			return user;
-//		}
+//		Objects.requireNonNull(username);
+//        User user = userDAO.findUserWithName(username).orElseThrow(() -> new UsernameNotFoundException("L'utilisateur n'a pas été trouvé"));
+//        return user;
 //	}
 }

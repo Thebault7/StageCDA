@@ -18,6 +18,8 @@ import com.stage.cda.herculepro.utils.PasswordEncoderGenerator;
 import com.stage.cda.herculepro.utils.checkIfListContainsAnEntity;
 
 @Controller
+//@RequestMapping("/sessionattributes")
+//@SessionAttributes("user")
 public class ConnectionController<T> {
 	
 	@Autowired
@@ -50,7 +52,6 @@ public class ConnectionController<T> {
 	
 	@RequestMapping(value="/validatePassword", method = RequestMethod.POST)
 	public ModelAndView validatePassword(ModelMap modelMap, User user) {
-		System.out.println("___________________________________________________");
 		String hashedPassword = peg.hashing(user.getPassword(), user.getPseudo());
 		user.setPassword(hashedPassword);
 		List<User> listUsers = userManager.listUsers();
@@ -62,4 +63,10 @@ public class ConnectionController<T> {
 		mav.addObject("errorIdentification", "Les identifiants entrés sont invalides.");
 		return mav;
 	}
+	
+//	// Declare a bean by a method, useful to for @SessionAttribute
+//	@ModelAttribute("user")
+//	public User user() {
+//		return new User();
+//	}
 }

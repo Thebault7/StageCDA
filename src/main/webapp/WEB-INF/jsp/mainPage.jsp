@@ -18,7 +18,7 @@
 				<li><a href="modifUser">Modification du profil de l'utilisateur</a></li>
 				<li><a href="modifCompany">Gestion des données de l'entreprise</a></li>
 				<li><a href="customers">Gestion des clients</a></li>
-				<li><a href="#">Gestion des articles</a></li>
+				<li><a href="articles">Gestion des articles</a></li>
 				<li><a href="#">Charger un devis</a></li>
 				<li><a href="addQuote">Créer un nouveau devis</a></li>
 				<li><a href="#">Se déconnecter</a></li>

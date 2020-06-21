@@ -49,17 +49,35 @@ public class CustomerController {
 	
 	@RequestMapping(method = RequestMethod.GET, path = {"/editCustomer"})
 	public ModelAndView editCustomer(ModelMap modelMap, Integer index) {
-		Customer customer = new Customer();
 		if (index != null && index > 0) {
+			Customer customer = customerManager.findOneById(index);
 			customer = customerManager.findOneById(index);
 			List<Address> listAddresses = addressManager.findByOrderByAddressNameAsc();
 			ModelAndView mav = new ModelAndView("editCustomer", "customer", customer);
+			Address address = new Address();
+			mav.addObject("address", address);
 			mav.addObject("listAddresses", listAddresses);
 			List<City> listCities = cityManager.findByOrderByCityNameAsc();
 			mav.addObject("listCities", listCities);
 			mav.addObject("customerIndex", index);
 			return mav;
 		}
-		return new ModelAndView("editCustomer");
+		return new ModelAndView("customers");
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = {"/validateCustomerModif"})
+	public String validateCustomerModif(ModelMap modelMap, Customer customer) {
+		customerManager.saveCustomer(customer);
+		return "customers";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = {"/addCustomer"})
+	public ModelAndView addCustomer (ModelMap modelMap) {
+		ModelAndView mav = new ModelAndView("addCustomer", "customer", new Customer());
+		return mav;
+	}
+	
+	public void validateNewCustomer (ModelMap modelMap) {
+		// TODO
 	}
 }

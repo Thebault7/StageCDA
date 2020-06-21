@@ -21,4 +21,8 @@ public class CustomerManager {
 	public Customer findOneById(int id) {
 		return customerDAO.findOne(id);
 	}
+	
+	public void saveCustomer(Customer customer) {
+		customerDAO.save(customer);
+	}
 }

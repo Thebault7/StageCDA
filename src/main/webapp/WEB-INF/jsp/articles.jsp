@@ -7,14 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<title></title>
+<title>Gestion des articles</title>
 </head>
 <body>
-	<ul>
-		<c:forEach items="${listStreets}" var="a" varStatus="aStatus">
-			<li>${a.addressNumber} ${a.addressName}</li>
-		</c:forEach>
-	</ul>
+	<h1>Gestion des articles</h1>
 </body>
 </html>

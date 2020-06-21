@@ -10,12 +10,13 @@
 <title>Affichage des clients</title>
 </head>
 <body>
-	<p><a href="#">Nouveau client</a></p>
+	<p><a href="addCustomer">Ajouter un nouveau client</a></p>
 	<h1>Affichage des clients</h1>
 	<table>
 		<tr>
 			<th>Nom</th>
 			<th>Prénom</th>
+			<th>Civilité</th>
 			<th>Adresse</th>
 			<th>Email</th>
 			<th>Téléphone</th>
@@ -26,6 +27,7 @@
 			<tr>
 				<td>${c.sirName}</td>
 				<td>${c.firstName}</td>
+				<td>${c.gender}</td>
 				<td>${c.address.addressNumber} ${c.address.addressName}<br />${c.address.city.postCode} ${c.address.city.cityName}</td>
 				<td>${c.email}</td>
 				<td>${c.phoneNumber}</td>

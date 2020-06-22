@@ -14,8 +14,15 @@
 <title>Modification du client</title>
 </head>
 <body>
-	<h1>Modification des données du client avec la référence
-		${customer.customerCode}</h1>
+	<c:choose>
+		<c:when test="${customer.customerCode == 'Inconnu'}">
+			<h1>Modification des données d'un client</h1>
+		</c:when>
+		<c:otherwise>
+			<h1>Modification des données du client avec la référence ${customer.customerCode}</h1>
+		</c:otherwise>
+	</c:choose>
+
 	<p>${errorMessage}</p>
 	<form:form action="validateCustomerModif" method="POST"
 		modelAttribute="customer" id="editCustomerForm">
@@ -38,7 +45,21 @@
 				<form:radiobutton path="gender" value="F" />Madame
 			</div>
 		</div>
-<%--		<div>
+
+		<div>
+			<form:label path="email">Email</form:label>
+			<div>
+				<form:input path="email" type="email" value="${customer.email}" />
+			</div>
+		</div>
+		<div>
+			<form:label path="phoneNumber">Téléphone</form:label>
+			<div>
+				<form:input path="phoneNumber" type="phone" value="${customer.phoneNumber}" />
+			</div>
+		</div>
+		
+		<div>
 			<form:label path="address.addressNumber">Numéro de la rue</form:label>
 			<div>
 				<form:input path="address.addressNumber" value="${customer.address.addressNumber}" id="addressNumber" />
@@ -50,6 +71,7 @@
 				<form:input path="address.addressName" value="${customer.address.addressName}" id="addressName" />
 			</div>
 		</div>
+		
 		<div>
 			<form:label path="address.city.cityName">Nom de la ville</form:label>
 			<div>
@@ -61,17 +83,11 @@
 			<div>
 				<form:input path="address.city.postCode" value="${customer.address.city.postCode}" id="postCode" />
 			</div>
-		</div>			--%>
-		<div>
-			<form:label path="email">Email</form:label>
-			<div>
-				<form:input path="email" type="email" value="${customer.email}" />
-			</div>
 		</div>
 		<div>
-			<form:label path="phoneNumber">Téléphone</form:label>
+			<form:label path="customerCode">Référence client</form:label>
 			<div>
-				<form:input path="phoneNumber" type="phone" value="${customer.phoneNumber}" />
+				<form:input path="customerCode" value="${customer.customerCode}" />
 			</div>
 		</div>
 		<div>
@@ -86,17 +102,56 @@
 		<a href="customers">Annuler</a>
 	</div>
 
-	<form:form action="" method="POST" modelAttribute="address">
+
+
+
+	
+		
+	<%--	
+	<form:form action="validateCustomerModif" method="POST" modelAttribute="city">
+		<div>
+			<form:label path="cityName">Nom de la ville</form:label>
+			<div>
+				<form:input path="cityName" value="${customer.address.city.cityName}" id="cityName" />
+			</div>
+		</div>
+		<div>
+			<form:label path="postCode">Code postal</form:label>
+			<div>
+				<form:input path="postCode" value="${customer.address.city.postCode}" id="postCode" />
+			</div>
+		</div>
+		<div>
+			<button type="submit">Modifier</button>
+		</div>
+	</form:form>
+		--%>
+		
+		
+	
+	
+	<label for="list_cities">Choisir une ville:</label>
+	<select name="villes" id="list_cities">
+		<option value="">--Choisir une option--</option>
+		<c:forEach items="${listCities}" var="c" varStatus="cstatus">
+			<option value="${c.cityName}">${c.cityName}</option>
+		</c:forEach>
+	</select>
+	
+	
+	
+	<%-- 
+	<form:form action="" method="POST" modelattribute="address">
 		<div>
 			<form:label path="city.id">Ville</form:label>
 			<div>
 				<form:select path="city.id" id="list_cities">
-					<form:options items="${listCities}" itemValue="id"
-						itemLabel="cityName" />
+					<form:options items="${listCities}" itemValue="id" itemLabel="cityName" />
 				</form:select>
 			</div>
 		</div>
 	</form:form>
+	--%>
 	<ul>
 		<c:forEach items="${listAddresses}" var="a" varStatus="aStatus">
 			<div class="${a.city.cityName} list_addresses">

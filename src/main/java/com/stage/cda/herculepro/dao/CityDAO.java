@@ -11,4 +11,5 @@ import com.stage.cda.herculepro.bean.City;
 public interface CityDAO extends JpaRepository<City, Integer> {
 
 	List<City> findByOrderByCityNameAsc();
+	City findOneByCityNameAndPostCode(String cityName, String postCode);
 }

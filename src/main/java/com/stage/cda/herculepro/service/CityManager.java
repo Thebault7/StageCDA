@@ -17,4 +17,16 @@ public class CityManager {
 	public List<City> findByOrderByCityNameAsc() {
 		return cityDAO.findByOrderByCityNameAsc();
 	}
+	
+	public City findByCityId(int id) {
+		return cityDAO.findOne(id);
+	}
+	
+	public City saveCity(City city) {
+		return cityDAO.save(city);
+	}
+	
+	public City findByCityNameAndPostCode(String cityName, String postCode) {
+		return cityDAO.findOneByCityNameAndPostCode(cityName, postCode);
+	}
 }

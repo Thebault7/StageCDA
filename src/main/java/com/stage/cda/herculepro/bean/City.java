@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="cities")
 @Component
-public class City implements Serializable {
+public class City implements Serializable, Comparable<Object> {
 
 	/**
 	 * 
@@ -74,5 +74,12 @@ public class City implements Serializable {
 	@Override
 	public String toString() {
 		return "City [id=" + id + ", cityName=" + cityName + ", postCode=" + postCode + "]";
+	}
+
+	@Override
+	public int compareTo(Object object) {
+		City compareToCity = (City)object;
+		if (this.getCityName().equals(compareToCity.getCityName()) && this.getPostCode().equals(compareToCity.getPostCode())) return 1;
+		return 0;
 	}
 }

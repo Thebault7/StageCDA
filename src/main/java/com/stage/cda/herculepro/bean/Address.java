@@ -2,6 +2,7 @@ package com.stage.cda.herculepro.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="adresses")
 @Component
-public class Address implements Serializable{
+public class Address implements Serializable, Comparable<Object>{
 
 	/**
 	 * 
@@ -30,10 +31,15 @@ public class Address implements Serializable{
 	private String addressName;
 	@Column(name="numbers", length = 7)
 	private String addressNumber;
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private City city;
 	
 	public Address() {
+	}
+
+	public Address(String addressName, String addressNumber) {
+		this.addressName = addressName;
+		this.addressNumber = addressNumber;
 	}
 
 	public Address(String addressName, String addressNumber, City city) {
@@ -57,19 +63,19 @@ public class Address implements Serializable{
 		this.id = id;
 	}
 
-	public String getaddressName() {
+	public String getAddressName() {
 		return addressName;
 	}
 
-	public void setaddressName(String addressName) {
+	public void setAddressName(String addressName) {
 		this.addressName = addressName;
 	}
 
-	public String getaddressNumber() {
+	public String getAddressNumber() {
 		return addressNumber;
 	}
 
-	public void setaddressNumber(String addressNumber) {
+	public void setAddressNumber(String addressNumber) {
 		this.addressNumber = addressNumber;
 	}
 
@@ -85,5 +91,15 @@ public class Address implements Serializable{
 	public String toString() {
 		return "Address [id=" + id + ", addressName=" + addressName + ", addressNumber=" + addressNumber + ", city=" + city
 				+ "]";
+	}
+
+	@Override
+	public int compareTo(Object object) {
+		Address compareToAddress = (Address)object;
+		if (this.getAddressName().equals(compareToAddress.getAddressName())
+				&& this.getAddressNumber().equals(compareToAddress.getAddressNumber())
+				&& this.getCity().getCityName().equals(compareToAddress.getCity().getCityName())
+				&& this.getCity().getPostCode().equals(compareToAddress.getCity().getPostCode())) return 1;
+		return 0;
 	}
 }

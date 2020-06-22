@@ -2,6 +2,7 @@ package com.stage.cda.herculepro.bean.articles;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +32,7 @@ public class Door implements Serializable, Article {
 	private int id;
 	@Column(name="references", length = 20)
 	private String reference;
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private Material material;
 	@Column(name="descriptions", length = 200)
 	private String description;

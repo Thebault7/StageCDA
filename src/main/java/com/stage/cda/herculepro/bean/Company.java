@@ -2,6 +2,7 @@ package com.stage.cda.herculepro.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +29,7 @@ public class Company implements Serializable {
 	private int id;
 	@Column(name="names", length = 30, nullable=false)
 	private String companyName;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Address address;
 	@Column(name="phone_numbers", length = 16)
 	private String phoneNumber;

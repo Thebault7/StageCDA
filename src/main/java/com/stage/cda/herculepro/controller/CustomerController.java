@@ -18,6 +18,7 @@ import com.stage.cda.herculepro.bean.Customer;
 import com.stage.cda.herculepro.service.AddressManager;
 import com.stage.cda.herculepro.service.CityManager;
 import com.stage.cda.herculepro.service.CustomerManager;
+import com.stage.cda.herculepro.utils.checkIfListContainsAnEntity;
 
 @Controller
 public class CustomerController {
@@ -28,56 +29,99 @@ public class CustomerController {
 	AddressManager addressManager;
 	@Autowired
 	CityManager cityManager;
-	
+	@Autowired
+	checkIfListContainsAnEntity<City> cilcaeCity;
+	@Autowired
+	checkIfListContainsAnEntity<Address> cilcaeAddress;
+
 	@PostConstruct
 	private void init() {
-		//TODO: init code
+		// TODO: init code
 	}
-	
+
 	@PreDestroy
-    private void shutdown() {
-        //TODO: destroy code
-    }
-	
-	@RequestMapping(method = RequestMethod.GET, path = {"/customers"})
+	private void shutdown() {
+		// TODO: destroy code
+	}
+
+	@RequestMapping(method = RequestMethod.GET, path = { "/customers" })
 	public ModelAndView listCustomers(ModelMap modelMap) {
 		ModelAndView mav = new ModelAndView("customers");
 		List<Customer> listCustomer = customerManager.findByOrderBySirNameAsc();
 		mav.addObject("listCustomers", listCustomer);
 		return mav;
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, path = {"/editCustomer"})
+
+	@RequestMapping(method = RequestMethod.GET, path = { "/editCustomer" })
 	public ModelAndView editCustomer(ModelMap modelMap, Integer index) {
 		if (index != null && index > 0) {
 			Customer customer = customerManager.findOneById(index);
-			customer = customerManager.findOneById(index);
-			List<Address> listAddresses = addressManager.findByOrderByAddressNameAsc();
-			ModelAndView mav = new ModelAndView("editCustomer", "customer", customer);
+			if (customer.getCustomerCode() == null) {
+				customer.setCustomerCode("Inconnu");
+			}
+
 			Address address = new Address();
+			if (customer.getAddress() == null) {
+				customer.setAddress(new Address("", ""));
+			} else {
+				address = addressManager.findByAddressId(customer.getAddress().getId());
+			}
+
+			City city = new City();
+			if (customer.getAddress().getCity() == null) {
+				customer.getAddress().setCity(new City("", ""));
+			} else {
+				city = cityManager.findByCityId(customer.getAddress().getCity().getId());
+			}
+
+			List<Address> listAddresses = addressManager.findByOrderByAddressNameAsc();
+			List<City> listCities = cityManager.findByOrderByCityNameAsc();
+
+			ModelAndView mav = new ModelAndView("editCustomer", "customer", customer);
+			mav.addObject("customerIndex", index);
 			mav.addObject("address", address);
 			mav.addObject("listAddresses", listAddresses);
-			List<City> listCities = cityManager.findByOrderByCityNameAsc();
+			mav.addObject("city", city);
 			mav.addObject("listCities", listCities);
-			mav.addObject("customerIndex", index);
+
 			return mav;
 		}
 		return new ModelAndView("customers");
 	}
-	
-	@RequestMapping(method = RequestMethod.POST, path = {"/validateCustomerModif"})
+
+	@RequestMapping(method = RequestMethod.POST, path = { "/validateCustomerModif" })
 	public String validateCustomerModif(ModelMap modelMap, Customer customer) {
+		List<City> listCities = cityManager.findByOrderByCityNameAsc();
+		City city = customer.getAddress().getCity();
+		if (!cilcaeCity.checkList(listCities, city)) {
+			customer.getAddress().setCity(cityManager.saveCity(city));
+		} else {
+			cityManager.findByCityNameAndPostCode(city.getCityName(), city.getPostCode());
+		}
+
+		List<Address> listAddresses = addressManager.findByOrderByAddressNameAsc();
+		Address address = customer.getAddress();
+		if (!cilcaeAddress.checkList(listAddresses, address)) {
+			customer.setAddress(addressManager.saveAddress(address));
+		} else {
+			addressManager.findOneAddressByAddressNameAndAddressNumberAndCityNameAndPostCode(
+										address.getAddressName(),
+										address.getAddressNumber(),
+										address.getCity().getCityName(),
+										address.getCity().getPostCode());
+		}
+		
 		customerManager.saveCustomer(customer);
 		return "customers";
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, path = {"/addCustomer"})
-	public ModelAndView addCustomer (ModelMap modelMap) {
+
+	@RequestMapping(method = RequestMethod.GET, path = { "/addCustomer" })
+	public ModelAndView addCustomer(ModelMap modelMap) {
 		ModelAndView mav = new ModelAndView("addCustomer", "customer", new Customer());
 		return mav;
 	}
-	
-	public void validateNewCustomer (ModelMap modelMap) {
+
+	public void validateNewCustomer(ModelMap modelMap) {
 		// TODO
 	}
 }

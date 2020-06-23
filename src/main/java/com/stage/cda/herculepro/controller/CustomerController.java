@@ -1,6 +1,7 @@
 package com.stage.cda.herculepro.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -90,38 +91,49 @@ public class CustomerController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = { "/validateCustomerModif" })
-	public String validateCustomerModif(ModelMap modelMap, Customer customer) {
+	public ModelAndView validateCustomerModif(ModelMap modelMap, Customer customer) {
 		List<City> listCities = cityManager.findByOrderByCityNameAsc();
 		City city = customer.getAddress().getCity();
 		if (!cilcaeCity.checkList(listCities, city)) {
 			customer.getAddress().setCity(cityManager.saveCity(city));
 		} else {
-			cityManager.findByCityNameAndPostCode(city.getCityName(), city.getPostCode());
+			City correspondingCityInDataBase = cityManager.findByCityNameAndPostCode(city.getCityName(), city.getPostCode());
+			customer.getAddress().getCity().setId(correspondingCityInDataBase.getId());
 		}
-
+		
 		List<Address> listAddresses = addressManager.findByOrderByAddressNameAsc();
 		Address address = customer.getAddress();
 		if (!cilcaeAddress.checkList(listAddresses, address)) {
-			customer.setAddress(addressManager.saveAddress(address));
+			Address add = addressManager.saveAddress(address);
+			customer.setAddress(add);
 		} else {
-			addressManager.findOneAddressByAddressNameAndAddressNumberAndCityNameAndPostCode(
+			Optional<Address> optAddress = addressManager.findOneAddressByAddressNameAndAddressNumberAndCityNameAndPostCode(
 										address.getAddressName(),
 										address.getAddressNumber(),
 										address.getCity().getCityName(),
 										address.getCity().getPostCode());
+			customer.setAddress(optAddress.get());
 		}
 		
 		customerManager.saveCustomer(customer);
-		return "customers";
+		
+		ModelAndView mav = new ModelAndView("customers");
+		List<Customer> listCustomer = customerManager.findByOrderBySirNameAsc();
+		mav.addObject("listCustomers", listCustomer);
+		return mav;
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = { "/addCustomer" })
 	public ModelAndView addCustomer(ModelMap modelMap) {
 		ModelAndView mav = new ModelAndView("addCustomer", "customer", new Customer());
+		List<Address> listAddresses = addressManager.findByOrderByAddressNameAsc();
+		List<City> listCities = cityManager.findByOrderByCityNameAsc();
+		mav.addObject("listAddresses", listAddresses);
+		mav.addObject("listCities", listCities);
 		return mav;
 	}
 
-	public void validateNewCustomer(ModelMap modelMap) {
-		// TODO
-	}
+//	public void validateNewCustomer(ModelMap modelMap) {
+//		// TODO
+//	}
 }

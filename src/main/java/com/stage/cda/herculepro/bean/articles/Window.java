@@ -135,10 +135,6 @@ public class Window implements Serializable, Article {
 		this.quantity = quantity;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Override
 	public String toString() {
 		return "Window [id=" + id + ", reference=" + reference + ", material=" + material + ", description=" + description

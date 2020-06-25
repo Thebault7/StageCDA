@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.stage.cda.herculepro.bean.Company;
 import com.stage.cda.herculepro.bean.User;
 import com.stage.cda.herculepro.service.CompanyManager;
 import com.stage.cda.herculepro.service.UserManager;
@@ -58,7 +59,7 @@ public class AddUserController {
 		if (error.contains("sirnameTooLong")) errorMessage += "Le nom est trop long. Maximum 30 caractères<br />";
 		if (error.contains("firstNameTooShort")) errorMessage += "Le prénom est trop court. Minimum 3 caractères<br />";
 		if (error.contains("firstNameTooLong")) errorMessage += "Le prénom est trop long. Maximum 30 caractères<br />";
-		if (error.contains("emailNotValid")) errorMessage += "L'email n'est pas valide.<br />";
+		if (error.contains("emailNotValid")) errorMessage += "L'email n'est pas valide<br />";
 		if (error.contains("emailTooLong")) errorMessage += "L'email est trop long. Maximum 50 caractères<br />";
 		mav.addObject("errorMessage", errorMessage);
 		return mav;
@@ -66,6 +67,8 @@ public class AddUserController {
 	
 	@RequestMapping(method = RequestMethod.POST, path = {"/validateNewUser"})
 	public ModelAndView validateNewUser(ModelMap modelMap, User user) {
+		Company companyOfUser = companyManager.findOneById(user.getCompany().getId());
+		user.setCompany(companyOfUser);
 		List<User> listUsers = userManager.listUsers();
 		List<String> errorMessages = new ArrayList<>();
 		for (int i = 0; i < listUsers.size(); i++) {

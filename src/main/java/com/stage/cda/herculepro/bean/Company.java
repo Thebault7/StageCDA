@@ -27,9 +27,9 @@ public class Company implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@Column(name="names", length = 30, nullable=false)
+	@Column(name="names", length = 30)
 	private String companyName;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Address address;
 	@Column(name="phone_numbers", length = 16)
 	private String phoneNumber;

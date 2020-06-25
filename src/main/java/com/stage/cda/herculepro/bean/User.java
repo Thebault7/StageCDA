@@ -39,7 +39,7 @@ public class User implements Serializable, Comparable<Object>/*, UserDetails */{
 	private String firstName;
 	@Column(name="emails", length = 50)
 	private String email;
-	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Company company;
 	@Column(name="usernames", length = 10)
 	private String username;

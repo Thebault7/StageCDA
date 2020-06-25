@@ -17,4 +17,8 @@ public class CompanyManager {
 	public List<Company> findByOrderByCompanyNameAsc() {
 		return companyDAO.findByOrderByCompanyNameAsc();
 	}
+	
+	public Company findOneById(int id) {
+		return companyDAO.getOne(id);
+	}
 }

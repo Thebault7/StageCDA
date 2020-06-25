@@ -33,7 +33,7 @@ public class Customer implements Serializable {
 	private String sirName;
 	@Column(name="genders", length = 1)
 	private String gender;
-	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.LAZY)
 	private Address address;
 	@Column(name="customer_reference", length = 20)
 	private String customerCode;

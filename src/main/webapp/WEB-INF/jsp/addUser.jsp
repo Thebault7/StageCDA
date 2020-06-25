@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -12,7 +12,7 @@
 <body>
 	<h1>Entrez vos nouveaux identifiants</h1>
 	<p>${errorMessage}</p>
- 	<form:form action="validateNewUser" method="POST" modelAttribute="user">
+	<form:form action="validateNewUser" method="POST" modelAttribute="user">
 		<div>
 			<form:label path="pseudo">Pseudo</form:label>
 			<div>
@@ -43,17 +43,27 @@
 				<form:input path="email" placeholder="Email..." />
 			</div>
 		</div>
-		<div>			
+		<div style="display:block">
 			<form:label path="company.id">Entreprise</form:label>
 			<div>
-				<form:select path="company.id">
-					<form:options items="${listCompanies}" itemValue="id" itemLabel="companyName"/>
-				</form:select>					
-			</div>
+				<form:input path="company.id" id="company_id" />
+			</div>		
 		</div>
 		<div>
 			<button type="submit">S'inscrire</button>
 		</div>
 	</form:form>
+
+	<div>
+		<label for="list_companies">Choisir une entreprise</label> <select
+			name="company" id="list_companies">
+			<option value="">--Choisir une option--</option>
+			<c:forEach items="${listCompanies}" var="c" varStatus="cstatus">
+				<option value="${c.id}">${c.companyName} - ${c.address.city.cityName }</option>
+			</c:forEach>
+		</select>
+	</div>
+	
+	<script type="text/javascript" src="../js/fillCompany.js"></script>
 </body>
 </html>

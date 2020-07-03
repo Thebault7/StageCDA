@@ -1,6 +1,20 @@
+@font-face {
+  font-family: "AlexBrush-Regular";
+  src: url(../font/AlexBrush-Regular.ttf);
+}
+
+span {
+	font-weight: bold;
+}
+
 #logo {
 	position: absolute;
 	z-index: 1;
+}
+
+#logo_stage {
+	display: flex;
+	justify-content: center;
 }
 
 #version_stage {
@@ -11,17 +25,10 @@
 	animation: animate 2s linear infinite;
 }
 
-@
-keyframes animate {
-	0% {
-	opacity: 0;
-	}
-	50% {
-	opacity: 1;
-	}
-	100% {
-	opacity: 0;
-	}
+@keyframes animate {
+	0% {opacity: 0;}
+	50% {opacity: 1;}
+	100% {opacity: 0;}
 }
 
 #logo_version_stage {
@@ -46,4 +53,70 @@ keyframes animate {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+#new_account {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#central_img {
+	display: flex;
+	justify-content: center;
+	align-items: start;
+	opacity: 0.5;
+}
+
+#side_section {
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: start;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#info_section {
+	height: 305px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: auto;
+	margin-bottom: auto;
+	border: 4px ridge silver;
+}	
+
+#info {
+	width: 100%;
+	height: 90%;
+	overflow-y: scroll;
+	scrollbar-width: thin;
+	padding: 10px;
+}
+
+#adv_section {
+	height: 305px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#ad_img {
+	height: 319px;
+	width: 100%;
+	border: 4px ridge silver;
+}
+
+#ad_index {
+	font-family: "AlexBrush-Regular", arial, serif;
+	margin-top: -25px;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	background-color: silver;
 }

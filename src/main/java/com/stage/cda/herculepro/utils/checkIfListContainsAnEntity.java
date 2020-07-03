@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * 
  */
 @Service(value="cilcae")
-public class checkIfListContainsAnEntity<T extends Comparable<Object>> {
+public class CheckIfListContainsAnEntity<T extends Comparable<Object>> {
 
 	public boolean checkList(List<T> list, T entity) {
 		for (int i = 0; i < list.size(); i++) {

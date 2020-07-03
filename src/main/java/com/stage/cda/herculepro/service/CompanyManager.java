@@ -19,6 +19,6 @@ public class CompanyManager {
 	}
 	
 	public Company findOneById(int id) {
-		return companyDAO.getOne(id);
+		return companyDAO.findOne(id);
 	}
 }

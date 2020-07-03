@@ -31,6 +31,5 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/site web/StageCDA/src/main/webapp/WEB-INF/lib/dwr.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

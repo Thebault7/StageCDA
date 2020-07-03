@@ -19,7 +19,7 @@ import com.stage.cda.herculepro.bean.Customer;
 import com.stage.cda.herculepro.service.AddressManager;
 import com.stage.cda.herculepro.service.CityManager;
 import com.stage.cda.herculepro.service.CustomerManager;
-import com.stage.cda.herculepro.utils.checkIfListContainsAnEntity;
+import com.stage.cda.herculepro.utils.CheckIfListContainsAnEntity;
 
 @Controller
 public class CustomerController {
@@ -31,9 +31,9 @@ public class CustomerController {
 	@Autowired
 	CityManager cityManager;
 	@Autowired
-	checkIfListContainsAnEntity<City> cilcaeCity;
+	CheckIfListContainsAnEntity<City> cilcaeCity;
 	@Autowired
-	checkIfListContainsAnEntity<Address> cilcaeAddress;
+	CheckIfListContainsAnEntity<Address> cilcaeAddress;
 
 	@PostConstruct
 	private void init() {

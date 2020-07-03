@@ -31,7 +31,7 @@ public class Address implements Serializable, Comparable<Object>{
 	private String addressName;
 	@Column(name="numbers", length = 7)
 	private String addressNumber;
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
+	@ManyToOne(cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	private City city;
 	
 	public Address() {

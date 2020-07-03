@@ -21,22 +21,23 @@
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div id="logo_stage" class="col-9 d-flex justify-content-center">
+			<div id="logo_stage" class="col-9">
 				<div id="logo_version_stage">
 					<img src="img/herculepro_logo_modif.png"
 						alt="Logo de HerculePro Stage" id="logo"> <img
-						src="img/version stage.png" alt="#" id="version_stage">
+						src="img/version stage.png" alt="" id="version_stage">
 				</div>
 			</div>
 			<div class="col-3 flex-column row" id="connect_section">
-				<div id="connexion" class="row">
+				<div id="connexion" class="row col-6">
 					<form action="app/connection" method="get">
-						<input type="submit" value="Connexion">
+						<input type="submit" value="Connexion" class="btn btn-primary">
 					</form>
 				</div>
-				<div id="new_account" class="row">
+				<div id="new_account" class="row col-6">
 					<form action="app/addUser" method="get">
-						<input type="submit" value="Création d'un compte">
+						<input type="submit" value="Création d'un compte"
+							class="btn btn-primary">
 					</form>
 				</div>
 			</div>
@@ -44,14 +45,32 @@
 	</div>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-9 d-flex justify-content-center">
+			<div id="central_img" class="col-9">
 				<img src="img/menuiserie.png" alt="Image d'un atelier de menuiserie"
 					id="img_workshop">
 			</div>
-			<div class="col-3 d-flex justify-content-center">
-				<div class="d-flex align-items-start flex-column">
-					<div>gdshtsh</div>
-					<div>fdhdshtgf</div>
+			<div id="side_section" class="col-3 flex-column row">
+				<div id="info_section">
+					<div id="info">
+						<p>
+							<span>Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit.
+							Suspendisse ultricies fringilla mauris, eget egestas risus
+							pulvinar ut. Sed nec nunc ex. Sed faucibus non ante a ornare.
+							Etiam tortor tellus, sagittis in est non, vehicula pharetra
+							ligula. Pellentesque ut arcu at arcu mollis tempus. <br>
+						</p>
+						<p>Etiam ligula libero, cursus vulputate sapien at, mattis
+							pretium nulla. Donec tempor mi id congue molestie. Curabitur
+							tempus luctus dolor a dignissim. Suspendisse ac molestie felis.
+							Fusce consequat orci quis volutpat dignissim. Sed pretium mollis
+							erat vel rhoncus.</p>
+					</div>
+				</div>
+				<div id="adv_section">
+					<div>
+						<img id="ad_img" src="img/Claw-hammer.jpg" alt="Publicité" />
+						<p id="ad_index">publicité</p>
+					</div>
 				</div>
 			</div>
 		</div>

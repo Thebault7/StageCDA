@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.stage.cda.herculepro.bean.User;
 import com.stage.cda.herculepro.service.UserManager;
 import com.stage.cda.herculepro.utils.PasswordEncoderGenerator;
-import com.stage.cda.herculepro.utils.checkIfListContainsAnEntity;
+import com.stage.cda.herculepro.utils.CheckIfListContainsAnEntity;
 
 @Controller
 //@RequestMapping("/sessionattributes")
@@ -27,7 +27,7 @@ public class ConnectionController<T> {
 	@Autowired
 	PasswordEncoderGenerator peg;
 	@Autowired
-	checkIfListContainsAnEntity<User> cilcae;
+	CheckIfListContainsAnEntity<User> cilcae;
 	
 	@PostConstruct
 	private void init() {

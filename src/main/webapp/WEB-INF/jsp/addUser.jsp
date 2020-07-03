@@ -43,27 +43,45 @@
 				<form:input path="email" placeholder="Email..." />
 			</div>
 		</div>
-		<div style="display:block">
-			<form:label path="company.id">Entreprise</form:label>
+ <%-- 		
+		<div style="display: block">
 			<div>
-				<form:input path="company.id" id="company_id" />
-			</div>		
+				<form:label path="company.id">Entreprise</form:label>
+				<div>
+					<form:input path="company.id" id="company_id" />
+				</div>
+				<form:label path="company.companyName">Nom de l'entreprise</form:label>
+				<div>
+					<form:input path="company.companyName" id="company_name" />
+				</div>
+			</div>
 		</div>
+	--%>	
+		<div>
+			<form:label path="company">Entreprise</form:label>
+			<div>
+				<form:select path="">
+					<form:option value="" label="--Sélectionner--" />
+					<form:options items="${listCompanies}" itemValue="companyName" itemLabel="companyName" />
+				</form:select>
+			</div>
+		</div> 
 		<div>
 			<button type="submit">S'inscrire</button>
 		</div>
 	</form:form>
-
+<%-- 
 	<div>
-		<label for="list_companies">Choisir une entreprise</label> <select
-			name="company" id="list_companies">
+		<label for="list_companies">Choisir une entreprise</label>
+		<select name="company" id="list_companies">
 			<option value="">--Choisir une option--</option>
 			<c:forEach items="${listCompanies}" var="c" varStatus="cstatus">
-				<option value="${c.id}">${c.companyName} - ${c.address.city.cityName }</option>
+				<option value="${c.id}">${c.companyName}-
+					${c.address.city.cityName }</option>
 			</c:forEach>
 		</select>
 	</div>
-	
+--%>
 	<script type="text/javascript" src="../js/fillCompany.js"></script>
 </body>
 </html>

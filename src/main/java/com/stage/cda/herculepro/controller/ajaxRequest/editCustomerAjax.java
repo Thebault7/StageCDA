@@ -1,19 +1,15 @@
 package com.stage.cda.herculepro.controller.ajaxRequest;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stage.cda.herculepro.ajax.AjaxResponseBody;
-import com.stage.cda.herculepro.ajax.AjaxSearchCriteria;
 import com.stage.cda.herculepro.bean.Address;
 import com.stage.cda.herculepro.service.AddressManager;
 

@@ -29,7 +29,7 @@ public class Company implements Serializable {
 	private int id;
 	@Column(name="names", length = 30)
 	private String companyName;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Address address;
 	@Column(name="phone_numbers", length = 16)
 	private String phoneNumber;

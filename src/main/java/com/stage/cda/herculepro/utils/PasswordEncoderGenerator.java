@@ -41,7 +41,7 @@ public class PasswordEncoderGenerator {
 			// One take its modulo 258 and then subtract 128. This way, it will always be
 			// between -128 and 127, which is within the range of the byte.
 			// Finally, one converts from integer to Integer and then to byte.
-			salt[i] = new Integer(((i * size) % 258) - 128).byteValue();
+			salt[i] = new Integer(((i * size) % 256) - 128).byteValue();
 		}
 
 		KeySpec spec = new PBEKeySpec(stringToBeHashed.toCharArray(), salt, 65536, 128);

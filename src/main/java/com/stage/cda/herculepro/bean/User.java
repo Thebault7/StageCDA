@@ -39,10 +39,8 @@ public class User implements Serializable, Comparable<Object>/*, UserDetails */{
 	private String firstName;
 	@Column(name="emails", length = 50)
 	private String email;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private Company company;
-	@Column(name="usernames", length = 10)
-	private String username;
 	
 	public User() {
 	}
@@ -56,18 +54,7 @@ public class User implements Serializable, Comparable<Object>/*, UserDetails */{
 		this.company = company;
 	}
 
-	public User(String password, String pseudo, String sirName, String firstName, String email, Company company,
-			String username) {
-		this.password = password;
-		this.pseudo = pseudo;
-		this.sirName = sirName;
-		this.firstName = firstName;
-		this.email = email;
-		this.company = company;
-		this.username = username;
-	}
-
-	public User(int id, String password, String pseudo, String sirName, String firstName, String email, Company company, String username) {
+	public User(int id, String password, String pseudo, String sirName, String firstName, String email, Company company) {
 		this.id = id;
 		this.password = password;
 		this.pseudo = pseudo;
@@ -75,7 +62,6 @@ public class User implements Serializable, Comparable<Object>/*, UserDetails */{
 		this.firstName = firstName;
 		this.email = email;
 		this.company = company;
-		this.username = username;
 	}
 
 	public int getId() {
@@ -133,15 +119,6 @@ public class User implements Serializable, Comparable<Object>/*, UserDetails */{
 
 	public void setCompany(Company company) {
 		this.company = company;
-	}
-
-//	@Override
-//	public String getUsername() {
-//		return username;
-//	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	@Override

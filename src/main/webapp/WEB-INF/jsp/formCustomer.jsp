@@ -52,6 +52,5 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="../js/listCities.js"></script>
 </body>
 </html>

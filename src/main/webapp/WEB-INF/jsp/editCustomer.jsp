@@ -42,9 +42,52 @@
 		<a href="customers">Annuler</a>
 	</div>
 
-	<%@ include file="/WEB-INF/jsp/listCities.jsp"%>
+<%--	<%@ include file="/WEB-INF/jsp/listCities.jsp"%>
 
-	<script type="text/javascript" src="../js/listCities.js"></script>
+	<script type="text/javascript" src="../js/listCities.js"></script>	--%>
+
+
+
+
+
+
+
+
+	<br><hr><br><hr><br>
+ 
+	<div>
+		<button onclick="loadAddress(${customer.address.city.id})">Rennes</button>
+	</div>
+
+	<script type="text/javascript">
+		function loadAddress(cityId) {
+			var url = "http://localhost:8080/StageCDA/app/listAddresses/" + cityId;
+			var addressRequest = new XMLHttpRequest();
+			addressRequest.open('GET', url);
+			addressRequest.onload = function() {
+				console.log(addressRequest.responseText);
+				if (addressRequest.status >= 200 && addressRequest.status < 400) {
+					var addressData = JSON.parse(addressRequest.responseText);
+					renderHTML(addressData);
+				} else {
+					alert("Pas de page à afficher");
+				};	
+			};
+			addressRequest.onerror = function() {
+				alert('autre erreur');
+			};
+			addressRequest.send(cityId);
+		}
+		
+		
+		function renderHTML(data) {
+			console.log("renderHTML");
+		}
+		
+		
+	</script>
+
+	<p>${customer.address.city.id}</p>
 
 </body>
 </html>

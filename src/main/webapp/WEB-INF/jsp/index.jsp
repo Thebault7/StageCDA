@@ -46,19 +46,22 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div id="central_img" class="col-9">
-				<img src="img/menuiserie.png" alt="Image d'un atelier de menuiserie"
-					id="img_workshop">
+				<img src="img/woodHouse.jpg" alt="photo d'une maison en bois en train d'être construite"
+					id="img_wood_house" />
+				<div id="moving_parts">
+					<img src="img/carpenter.png" alt="#" id="img_carpenter" />
+  					<img src="img/carpenterTable.jpg" alt="#" id="img_carpenter_table" />
+				</div>
+				<img src="img/transparentScreen.jpg" alt="#" id="transparent_screen" />
 			</div>
 			<div id="side_section" class="col-3 flex-column row">
 				<div id="info_section">
 					<div id="info">
-						<p>
-							<span>Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit.
+						<p><span>Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit.
 							Suspendisse ultricies fringilla mauris, eget egestas risus
 							pulvinar ut. Sed nec nunc ex. Sed faucibus non ante a ornare.
 							Etiam tortor tellus, sagittis in est non, vehicula pharetra
-							ligula. Pellentesque ut arcu at arcu mollis tempus. <br>
-						</p>
+							ligula. Pellentesque ut arcu at arcu mollis tempus. <br></p>
 						<p>Etiam ligula libero, cursus vulputate sapien at, mattis
 							pretium nulla. Donec tempor mi id congue molestie. Curabitur
 							tempus luctus dolor a dignissim. Suspendisse ac molestie felis.
@@ -75,5 +78,7 @@
 			</div>
 		</div>
 	</div>
+	
+	<script src="js/index.js"></script>
 </body>
 </html>
